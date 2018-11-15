@@ -1,0 +1,10 @@
+<script>
+    function convert (val) {
+      document.querySelector('#b').value = btoa(val.trim())
+    }
+    function convert2 (val) {
+      document.querySelector('#a').value = atob(val.trim())
+    }
+</script>
+<textarea name="" id="a" cols="30" rows="10" onchange="convert(this.value)"></textarea>
+<textarea name="" id="b" cols="30" rows="10" onchange="convert2(this.value)"></textarea>
