@@ -1,0 +1,27 @@
+<style>
+  html textarea {
+  min-height: 500px;
+  width: 50%;
+  margin: 0 10px;
+  font-family: monospace;
+}
+</style>
+<script>
+    function convert (val) {
+      document.querySelector('#b').value = JSON.stringify(val.trim())
+    }
+    function convert2 (val) {
+      try {
+        const sanitized = val.replace(/\\"/g,'"').replace(/\\n/g, '\n')
+        document.querySelector('#a').value = JSON.stringify(JSON.parse(sanitized), null, 2)
+
+      } catch (e ) {
+        console.log(e)
+      }
+    }
+</script>
+JSON stringify<br/>
+<textarea name="" id="a" cols="30" rows="10" onchange="convert(this.value)"></textarea>
+<br/>
+JSON parse (and unescape)<br/>
+<textarea name="" id="b" cols="30" rows="10" onchange="convert2(this.value)"></textarea>
