@@ -12,7 +12,8 @@
     }
     function convert2 (val) {
       try {
-        const sanitized = val.replace(/\\"/g,'"').replace(/\\n/g, '\n')
+        // negative lookahead to make sure not unescape string content
+        const sanitized = val.replace(/(?<!\\)\\"/g,'"').replace(/(?<!\\)\\n/g, ' ')
         document.querySelector('#a').value = JSON.stringify(JSON.parse(sanitized), null, 2)
 
       } catch (e ) {
